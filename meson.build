@@ -93,6 +93,10 @@ cdata.set('PACKAGE_BUGREPORT', '"x@x"')
 
 cdata.set('ASSUME_RAM', 128)
 
+if cc.get_id() == 'msvc'
+  add_project_arguments('-DDWORD=uint32_t', language:'c')
+endif
+
 configure_file(input : 'config.h.meson',
   output : 'config.h',
   configuration : cdata
