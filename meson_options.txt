@@ -23,6 +23,12 @@ option('filter_lzma1', type : 'boolean', value : true)
 option('filter_lz', type : 'boolean', value : true)
 option('filter_delta', type : 'boolean', value : true)
 
+option('mf_bt2', type : 'boolean', value : true)
+option('mf_bt3', type : 'boolean', value : true)
+option('mf_bt4', type : 'boolean', value : true)
+option('mf_hc3', type : 'boolean', value : true)
+option('mf_hc4', type : 'boolean', value : true)
+
 option('check_crc32', type : 'boolean', value : true)
 option('check_crc64', type : 'boolean', value : true)
 option('check_sha256', type : 'boolean', value : true)

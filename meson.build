@@ -46,6 +46,13 @@ check_coders = [['decoder_arm', 'HAVE_DECODER_ARM'],
   ['encoder_x86', 'HAVE_ENCODER_X86']
 ]
 
+check_mf = [['mf_bt2', 'HAVE_MF_BT2'],
+  ['mf_bt3', 'HAVE_MF_BT3'],
+  ['mf_bt4', 'HAVE_MF_BT4'],
+  ['mf_hc3', 'HAVE_MF_HC3'],
+  ['mf_hc4', 'HAVE_MF_HC4']
+]
+
 check_integrity = [['check_crc32', 'HAVE_CHECK_CRC32'],
   ['check_crc64', 'HAVE_CHECK_CRC64'],
   ['check_sha256', 'HAVE_CHECK_SHA256']
@@ -58,6 +65,12 @@ foreach i : check_headers
 endforeach
 
 foreach i : check_coders
+  if get_option(i.get(0))
+    cdata.set(i.get(1), 1)
+  endif
+endforeach
+
+foreach i : check_mf
   if get_option(i.get(0))
     cdata.set(i.get(1), 1)
   endif
