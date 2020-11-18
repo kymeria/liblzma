@@ -32,3 +32,5 @@ option('mf_hc4', type : 'boolean', value : true)
 option('check_crc32', type : 'boolean', value : true)
 option('check_crc64', type : 'boolean', value : true)
 option('check_sha256', type : 'boolean', value : true)
+
+option('enable_xz', type : 'boolean', value: true)
