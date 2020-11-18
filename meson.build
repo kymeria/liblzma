@@ -46,6 +46,11 @@ check_coders = [['decoder_arm', 'HAVE_DECODER_ARM'],
   ['encoder_x86', 'HAVE_ENCODER_X86']
 ]
 
+check_integrity = [['check_crc32', 'HAVE_CHECK_CRC32'],
+  ['check_crc64', 'HAVE_CHECK_CRC64'],
+  ['check_sha256', 'HAVE_CHECK_SHA256']
+]
+
 foreach i : check_headers
   if cc.has_header(i.get(0))
     cdata.set(i.get(1), 1)
@@ -58,6 +63,13 @@ foreach i : check_coders
   endif
 endforeach
 
+foreach i : check_integrity
+  if get_option(i.get(0))
+    cdata.set(i.get(1), 1)
+  endif
+endforeach
+
+
 if cc.has_type('_Bool')
   cdata.set('HAVE__BOOL', 1)
 endif
@@ -67,9 +79,6 @@ cdata.set('PACKAGE_URL', '"http://tukaani.org/xz/"')
 cdata.set('PACKAGE_BUGREPORT', '"x@x"')
 
 cdata.set('ASSUME_RAM', 128)
-cdata.set('HAVE_CHECK_CRC32', 1)
-cdata.set('HAVE_CHECK_CRC64', 1)
-cdata.set('HAVE_CHECK_SHA256', 1)
 
 configure_file(input : 'config.h.meson',
   output : 'config.h',
